@@ -34,13 +34,14 @@ def heapsort(list):
 
     # Build a max heap
     for i in range(n // 2 - 1, -1, -1):
+        steps += 1
         steps = heapify(list, n, i, steps)
 
     # Extract elements from the heap one by one
     for i in range(n - 1, 0, -1):
+        steps += 1
         list[i], list[0] = list[0], list[i]  # Swap
         steps = heapify(list, i, 0, steps)
-        steps += 1
 
     return list, steps
 
