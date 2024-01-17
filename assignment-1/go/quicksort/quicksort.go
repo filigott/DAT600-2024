@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"math/rand"
+	"time"
 )
 
 func QuickSort(list []int) []int {
@@ -28,16 +30,30 @@ func QuickSort(list []int) []int {
 
 	return append(append(QuickSort(left), middle...), QuickSort(right)...)
 }
+func GenerateRandomList(n int) []int {
+	list := make([]int, n)
+	for i := 0; i < n; i++ {
+		list[i] = rand.Intn(n)
+	}
+	return list
+}
 
 func main() {
-	num := 50
+	// Test execution time of quicksort
+	max_list_length_digits := 6
+	executionTimeSlice := make([]float64, max_list_length_digits-1)
+	lengthsSlice := make([]int, max_list_length_digits-1)
+	for i := 1; i < max_list_length_digits; i++ {
+		n := math.Pow(float64(10), float64(i))
+		fmt.Println(n)
+		l := GenerateRandomList(int(n))
+		timeStart := time.Now()
+		_ = QuickSort(l)
+		timeEnd := time.Now()
+		executionTimeSlice[i-1] = timeEnd.Sub(timeStart).Seconds()
+		lengthsSlice[i-1] = int(n)
 
-	unsortedList := make([]int, num)
-	for i := 0; i < num; i++ {
-		unsortedList[i] = rand.Intn(num) + 1
 	}
-	fmt.Println("Unsorted list:", unsortedList)
-
-	sortedList := QuickSort(unsortedList)
-	fmt.Println("Sorted list:", sortedList)
+	fmt.Println(executionTimeSlice)
+	fmt.Println(lengthsSlice)
 }
