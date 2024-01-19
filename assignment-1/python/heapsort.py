@@ -47,7 +47,7 @@ def heapsort(list):
 
 
 if __name__ == "__main__":
-    start_num = 10
+    start_num = 6
     points = 10
 
     unsorted_list = [r.randint(1, start_num) for _ in range(start_num)]
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     counted_steps = []
     expected_steps = []
 
-    constant = 1.7  # found by trial and error
+    constant = 1.65  # found by trial and error
 
     for list in lists:
         _, steps = heapsort(list)

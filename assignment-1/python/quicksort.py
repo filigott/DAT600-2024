@@ -69,10 +69,10 @@ if __name__ == "__main__":
     expected_steps = []
     lengths = []
 
-    constant = 1.1
+    constant = 1.2
 
     for i in range(points):
-        length = 2**i
+        length = num * 2**i
         unsorted_list = [r.randint(1, length) for _ in range(length)]
         qs = QuickSort()
         sorted = qs.quicksort(unsorted_list)
