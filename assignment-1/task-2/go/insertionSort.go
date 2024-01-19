@@ -45,18 +45,19 @@ func GenerateRandomList(n int) []int {
 
 func main() {
 	// Test execution time of InsertionSort
-	max_list_length_digits := 7
-	executionTimeSlice := make([]float64, max_list_length_digits-1)
-	lengthsSlice := make([]int, max_list_length_digits-1)
-	for i := 1; i < max_list_length_digits; i++ {
-		n := math.Pow(float64(10), float64(i))
+	numPoints := 10
+	//max_list_length_digits := 6
+	executionTimeSlice := make([]float64, numPoints)
+	lengthsSlice := make([]int, numPoints)
+	for i := 0; i < numPoints; i++ {
+		n := 96 * math.Pow(float64(2), float64(i))
 		fmt.Println(n)
 		l := GenerateRandomList(int(n))
 		timeStart := time.Now()
 		_ = InsertionSort(l)
-		timeEnd := time.Now()
-		executionTimeSlice[i-1] = timeEnd.Sub(timeStart).Seconds()
-		lengthsSlice[i-1] = int(n)
+		executionTime := time.Since(timeStart)
+		executionTimeSlice[i] = executionTime.Seconds()
+		lengthsSlice[i] = int(n)
 
 	}
 	fmt.Println(executionTimeSlice)
