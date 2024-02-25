@@ -5,6 +5,7 @@ __pycache__/
 
 # Custom
 *.ipynb
+settings.json
 
 # C extensions
 *.so
