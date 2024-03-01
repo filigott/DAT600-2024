@@ -30,6 +30,7 @@ def generate_0_1_knapsack_problem(items, capacity):
                 dp[i][j] = max(dp[i - 1][j], items[i - 1].value + dp[i - 1][j - items[i - 1].weight])
             else:
                 dp[i][j] = dp[i - 1][j]
+    
 
     # Reconstruct the items that are chosen
     knapsack = [0] * n
